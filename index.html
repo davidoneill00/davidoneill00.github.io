@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>David O'Neill — Astrophysics</title>
-<meta name="description" content="David O'Neill, postdoctoral researcher at ISTA. Black hole binaries, circumbinary disk dynamics, and gravitational wave sources for LISA.">
+<meta name="description" content="David O'Neill, postdoctoral researcher at ISTA. Black hole binaries, circumbinary disk dynamics, analytical fluid dynamics, and gravitational wave sources for LISA.">
 <meta name="author" content="David O'Neill">
 
 <meta property="og:title" content="David O'Neill — Astrophysics">
@@ -149,9 +149,25 @@ h3{font-size:1.32rem;font-weight:400;margin-bottom:12px;line-height:1.3}
 .rcard p{font-size:.98rem;color:var(--paper-dim);line-height:1.6}
 
 /* ---------- media ---------- */
-.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px}
-figure{background:var(--ink);border:1px solid var(--rule);overflow:hidden}
-figure img,figure video{width:100%;display:block;background:#000}
+.ggroup{margin-bottom:56px}
+.ggroup:last-child{margin-bottom:0}
+.glabel{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;
+  letter-spacing:.14em;text-transform:uppercase;color:#c6c9cd;
+  padding-bottom:16px;margin-bottom:28px;border-bottom:1px solid var(--rule);
+  display:flex;align-items:baseline;gap:14px;
+}
+.gnum{color:var(--lum-deep);font-size:11px}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+figure{background:var(--ink);border:1px solid var(--rule);overflow:hidden;display:flex;flex-direction:column}
+figure img{width:100%;display:block;background:#000}
+figure video{
+  width:100%;object-fit:contain;
+  display:block;background:#000;
+}
+/* disk sims are square-ish; friction movies are 16:9 */
+#disk-sims figure video{aspect-ratio:1/1}
+#df-binary figure video,#df-hyper figure video{aspect-ratio:16/9}
 figcaption{
   padding:16px 20px;font-family:'Inter',sans-serif;
   font-size:13px;line-height:1.5;color:var(--paper-dim);
@@ -220,10 +236,10 @@ footer{
     <div class="hero-copy">
       <div class="eyebrow">Postdoctoral Researcher · ISTA</div>
       <h1>David<br>O'Neill</h1>
-      <p class="lede">I simulate the gas around merging black holes, and work out what it does to the gravitational waves we'll detect.</p>
+      <p class="lede">I study the environments around merging black holes and the gravitational waves signals that they emit.</p>
       <div class="hero-meta">
         Institute of Science and Technology Austria<br>
-        <span>Haiman Group · Klosterneuburg</span>
+        <span>Haiman Group</span>
       </div>
     </div>
   </div>
@@ -236,13 +252,13 @@ footer{
       <h2>Research</h2>
     </div>
     <div class="prose" style="margin-bottom:52px">
-      <p>Supermassive black hole binaries do not merge in vacuum. They spiral together inside accretion disks, and that gas leaves fingerprints — on the orbit, on the light we see, and on the gravitational waveform itself. My work is about predicting those fingerprints precisely enough to be useful when LISA flies.</p>
+      <p>Supermassive black hole binaries do not merge in vacuum: they are embedded in the dense "environments" of galactc centers where nearby stars and gas can interact with the black holes. These binaries exchange energy and momentum with the surrouding environment until, eventually, the black holes spiral together in a gravitational wave-driven merger. The emitted gravitational waves encode information about the merger as they travel through the universe -- until the upcoming Laser Interferometer Space Antenna (a European Space Agency mission in partnership with NASA) is launched and we directly detect these gravitational waves. My research focuses on predicting these fingerprints and to understand the physical processes that shape supermassive black hole mergers.</p>
     </div>
     <div class="rgrid">
       <div class="rcard">
         <span class="rtag">Retrograde disks</span>
         <h3>Counter-rotating gas</h3>
-        <p>Retrograde circumbinary disks lack the orbital resonances that dominate prograde systems, so they behave in fundamentally different ways: no cleared cavity, direct gas flow onto the binary, and shocked structures between the black holes. They may be nearly as common as prograde disks — and far less studied.</p>
+        <p> A retrograde circumbinary disk, interacting with a binary. No cleared cavity, direct gas flow onto the binary, and shocked structures between the black holes. They may be nearly as common as prograde disks — and far less studied.</p>
       </div>
       <div class="rcard">
         <span class="rtag">Gravitational wave decoupling</span>
@@ -269,38 +285,98 @@ footer{
       <span class="sec-num">02</span>
       <h2>Gallery</h2>
     </div>
-    <div class="prose" style="margin-bottom:44px">
-      <p>Figures and movies from simulations. <span class="mono" style="font-size:.85em;color:var(--lum-deep)">[Replace these placeholders with your own — instructions in README.md]</span></p>
+    <div class="prose" style="margin-bottom:8px">
+      <p>Movies from numerical simulations and linear perturbation theory. They play as you scroll.</p>
     </div>
-    <div class="mgrid">
 
-      <figure>
-        <img src="assets/img/hero.jpg" alt="Spiral density structure in a retrograde circumbinary disk.">
-        <figcaption>
-          <b>Retrograde circumbinary disk</b>
-          Spiral shock structure around an equal-mass binary. Sailfish, 2D viscous hydrodynamics.
-        </figcaption>
-      </figure>
+    <div class="ggroup" id="disk-sims">
+      <div class="glabel"><span class="gnum">2.1</span> Circumbinary disk simulations</div>
+      <div class="mgrid">
+        <figure>
+          <video muted loop playsinline preload="none" poster="assets/img/poster-Comparison_Pro_Ret.jpg" data-lazy>
+            <source src="assets/video/Comparison_Pro_Ret.mp4" type="video/mp4">
+          </video>
+          <figcaption>
+            <b>Prograde vs. retrograde</b>
+            Side-by-side surface density for a binary in prograde and retrograde circumbinary disks. Note the cleared cavity in one and the direct intrabinary flow in the other.
+          </figcaption>
+        </figure>
+        <figure>
+          <video muted loop playsinline preload="none" poster="assets/img/poster-EccentricRetrograde.jpg" data-lazy>
+            <source src="assets/video/EccentricRetrograde.mp4" type="video/mp4">
+          </video>
+          <figcaption>
+            <b>Eccentric retrograde disk</b>
+            Retrograde circumbinary disk around an eccentric binary, showing the shocked bridge structure between the black holes.
+          </figcaption>
+        </figure>
+        <figure>
+          <video muted loop playsinline preload="none" poster="assets/img/poster-my-animation.jpg" data-lazy>
+            <source src="assets/video/my-animation.mp4" type="video/mp4">
+          </video>
+          <figcaption>
+            <b>Polar disk, 3D</b>
+            Three-dimensional rendering of a polar-aligned circumbinary disk.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
 
-      <figure>
-        <video controls muted loop playsinline preload="metadata" poster="assets/img/hero-small.jpg">
-          <source src="assets/video/example.mp4" type="video/mp4">
-          Your browser does not support video playback.
-        </video>
-        <figcaption>
-          <b>Movie slot</b>
-          Drop an .mp4 at assets/video/example.mp4 to activate. Keep files under ~50 MB for GitHub Pages.
-        </figcaption>
-      </figure>
+    <div class="ggroup" id="df-binary">
+      <div class="glabel"><span class="gnum">2.2</span> Dynamical friction · eccentric binaries</div>
+      <div class="mgrid">
+        <figure>
+          <video muted loop playsinline preload="none" poster="assets/img/poster-SubsonicBinaryCropped.jpg" data-lazy>
+            <source src="assets/video/SubsonicBinaryCropped.mp4" type="video/mp4">
+          </video>
+          <figcaption>
+            <b>Subsonic</b>
+            Linear-theory density perturbation from an eccentric binary moving subsonically through a gaseous medium.
+          </figcaption>
+        </figure>
+        <figure>
+          <video muted loop playsinline preload="none" poster="assets/img/poster-TransonicCropped.jpg" data-lazy>
+            <source src="assets/video/TransonicCropped.mp4" type="video/mp4">
+          </video>
+          <figcaption>
+            <b>Transonic</b>
+            The same system near Mach 1, where the wake structure changes character.
+          </figcaption>
+        </figure>
+        <figure>
+          <video muted loop playsinline preload="none" poster="assets/img/poster-SupersonicBinary.jpg" data-lazy>
+            <source src="assets/video/SupersonicBinary.mp4" type="video/mp4">
+          </video>
+          <figcaption>
+            <b>Supersonic</b>
+            Supersonic motion, with the Mach cone and trailing density wake fully developed.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
 
-      <figure>
-        <img src="assets/img/hero-small.jpg" alt="Placeholder figure.">
-        <figcaption>
-          <b>Figure slot</b>
-          Swap in any PNG or JPG from assets/img/ and rewrite this caption.
-        </figcaption>
-      </figure>
-
+    <div class="ggroup" id="df-hyper">
+      <div class="glabel"><span class="gnum">2.3</span> Dynamical friction · hyperbolic encounters</div>
+      <div class="mgrid">
+        <figure>
+          <video muted loop playsinline preload="none" poster="assets/img/poster-HyperbolicMovie.jpg" data-lazy>
+            <source src="assets/video/HyperbolicMovie.mp4" type="video/mp4">
+          </video>
+          <figcaption>
+            <b>Hyperbolic passage</b>
+            Density response to a mass on a hyperbolic Keplerian trajectory through gas, from linear perturbation theory.
+          </figcaption>
+        </figure>
+        <figure>
+          <video muted loop playsinline preload="none" poster="assets/img/poster-AsymptoticMovie.jpg" data-lazy>
+            <source src="assets/video/AsymptoticMovie.mp4" type="video/mp4">
+          </video>
+          <figcaption>
+            <b>Asymptotic regime</b>
+            The late-time asymptotic wake of the hyperbolic encounter.
+          </figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </section>
@@ -399,5 +475,29 @@ footer{
   </div>
 </footer>
 
+<script>
+// Play videos only while they're on screen; pause when they scroll away.
+// Keeps eight simulations from all decoding at once and draining battery.
+(function(){
+  var vids = document.querySelectorAll('video[data-lazy]');
+  if(!('IntersectionObserver' in window)){
+    // Fallback: just let them all load and loop.
+    vids.forEach(function(v){ v.autoplay=true; v.load(); v.play().catch(function(){}); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var v = e.target;
+      if(e.isIntersecting){
+        if(v.preload === 'none'){ v.preload = 'auto'; v.load(); }
+        v.play().catch(function(){});
+      } else {
+        v.pause();
+      }
+    });
+  }, {threshold: 0.25});
+  vids.forEach(function(v){ io.observe(v); });
+})();
+</script>
 </body>
 </html>

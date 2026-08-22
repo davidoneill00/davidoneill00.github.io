@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>David O'Neill — Astrophysics</title>
-<meta name="description" content="David O'Neill, postdoctoral researcher at ISTA. Black hole binaries, circumbinary disk dynamics, analytical fluid dynamics, and gravitational wave sources for LISA.">
+<meta name="description" content="David O'Neill, postdoctoral researcher at ISTA. Black hole binaries, circumbinary disk dynamics, and gravitational wave sources for LISA.">
 <meta name="author" content="David O'Neill">
 
 <meta property="og:title" content="David O'Neill — Astrophysics">
@@ -108,7 +108,7 @@ h1{
   margin-bottom:24px;
 }
 h1 em{font-style:italic;color:var(--lum)}
-.lede{font-size:1.22rem;color:#c6c9cd;max-width:34ch;margin-bottom:34px}
+.lede{font-size:1.08rem;line-height:1.6;color:#c6c9cd;max-width:46ch;margin-bottom:34px}
 .hero-meta{
   font-family:'IBM Plex Mono',monospace;font-size:12.5px;
   color:var(--paper-dim);line-height:2;
@@ -147,6 +147,32 @@ h3{font-size:1.32rem;font-weight:400;margin-bottom:12px;line-height:1.3}
   margin-bottom:18px;display:block;
 }
 .rcard p{font-size:.98rem;color:var(--paper-dim);line-height:1.6}
+
+/* ---------- full-bleed simulation sections ---------- */
+.feature{padding:104px 0;border-top:1px solid var(--rule)}
+.feature-head{margin-bottom:44px}
+.feature-eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--lum);
+  margin-bottom:16px;
+}
+.feature-title{
+  font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;
+  letter-spacing:-.02em;line-height:1.05;
+}
+.feature-stage{background:#000;border:1px solid var(--rule);overflow:hidden}
+.feature-stage video{width:100%;display:block;background:#000}
+.feature-duo{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--rule);border:1px solid var(--rule)}
+.feature-duo .cell{background:#000;overflow:hidden}
+.feature-duo video{width:100%;display:block;background:#000;aspect-ratio:1/1;object-fit:contain}
+.feature-cap{
+  font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;
+  color:var(--paper-dim);margin-top:20px;max-width:70ch;
+}
+.feature-cap b{color:var(--paper);font-weight:600}
+@media(max-width:720px){
+  .feature-duo{grid-template-columns:1fr}
+}
 
 /* ---------- media ---------- */
 .ggroup{margin-bottom:56px}
@@ -222,7 +248,8 @@ footer{
     <a class="brand" href="#top">D. O'Neill</a>
     <ul class="navlinks">
       <li><a href="#research">Research</a></li>
-      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#polar">Simulations</a></li>
+      <li><a href="#gallery">Dynamical Friction</a></li>
       <li><a href="#publications">Publications</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -236,10 +263,10 @@ footer{
     <div class="hero-copy">
       <div class="eyebrow">Postdoctoral Researcher · ISTA</div>
       <h1>David<br>O'Neill</h1>
-      <p class="lede">I study the environments around merging black holes and the gravitational waves signals that they emit.</p>
+      <p class="lede">Supermassive black hole binaries do not merge in vacuum. They are embedded in the dense environments of galactic centers, exchanging energy and momentum with the surrounding stars and gas until they spiral together in a gravitational wave-driven merger. Those waves carry the imprint of the environment that shaped them — a signal the upcoming Laser Interferometer Space Antenna (LISA) will detect directly. My research predicts these fingerprints and the physical processes behind them.</p>
       <div class="hero-meta">
         Institute of Science and Technology Austria<br>
-        <span>Haiman Group</span>
+        <span>Haiman Group · Klosterneuburg</span>
       </div>
     </div>
   </div>
@@ -252,13 +279,13 @@ footer{
       <h2>Research</h2>
     </div>
     <div class="prose" style="margin-bottom:52px">
-      <p>Supermassive black hole binaries do not merge in vacuum: they are embedded in the dense "environments" of galactc centers where nearby stars and gas can interact with the black holes. These binaries exchange energy and momentum with the surrouding environment until, eventually, the black holes spiral together in a gravitational wave-driven merger. The emitted gravitational waves encode information about the merger as they travel through the universe -- until the upcoming Laser Interferometer Space Antenna (a European Space Agency mission in partnership with NASA) is launched and we directly detect these gravitational waves. My research focuses on predicting these fingerprints and to understand the physical processes that shape supermassive black hole mergers.</p>
+      <p>Supermassive black hole binaries do not merge in vacuum. They spiral together inside accretion disks, and that gas leaves fingerprints — on the orbit, on the light we see, and on the gravitational waveform itself. My work is about predicting those fingerprints precisely enough to be useful when LISA flies.</p>
     </div>
     <div class="rgrid">
       <div class="rcard">
         <span class="rtag">Retrograde disks</span>
         <h3>Counter-rotating gas</h3>
-        <p> A retrograde circumbinary disk, interacting with a binary. No cleared cavity, direct gas flow onto the binary, and shocked structures between the black holes. They may be nearly as common as prograde disks — and far less studied.</p>
+        <p>Retrograde circumbinary disks lack the orbital resonances that dominate prograde systems, so they behave in fundamentally different ways: no cleared cavity, direct gas flow onto the binary, and shocked structures between the black holes. They may be nearly as common as prograde disks — and far less studied.</p>
       </div>
       <div class="rcard">
         <span class="rtag">Gravitational wave decoupling</span>
@@ -279,51 +306,61 @@ footer{
   </div>
 </section>
 
+<section class="feature" id="polar">
+  <div class="wrap">
+    <div class="feature-head">
+      <div class="feature-eyebrow">Circumbinary disk simulations</div>
+      <h2 class="feature-title">Polar Circumbinary Disks</h2>
+    </div>
+    <div class="feature-stage">
+      <video muted loop playsinline preload="none" poster="assets/img/poster-my-animation.jpg" data-lazy>
+        <source src="assets/video/my-animation.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="feature-cap">
+      <b>Three-dimensional polar-aligned disk.</b>
+      A circumbinary disk settled into a polar configuration, orbiting perpendicular to the binary plane. Shown in three orthogonal projections.
+    </p>
+  </div>
+</section>
+
+<section class="feature" id="retrograde">
+  <div class="wrap">
+    <div class="feature-head">
+      <div class="feature-eyebrow">Circumbinary disk simulations</div>
+      <h2 class="feature-title">Retrograde Circumbinary Disks</h2>
+    </div>
+    <div class="feature-duo">
+      <div class="cell">
+        <video muted loop playsinline preload="none" poster="assets/img/poster-Comparison_Pro_Ret.jpg" data-lazy>
+          <source src="assets/video/Comparison_Pro_Ret.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="cell">
+        <video muted loop playsinline preload="none" poster="assets/img/poster-EccentricRetrograde.jpg" data-lazy>
+          <source src="assets/video/EccentricRetrograde.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <p class="feature-cap">
+      <b>Left:</b> retrograde and prograde disks side by side, showing the cleared cavity of the prograde case against the direct intrabinary flow of the retrograde one.
+      <b>Right:</b> a retrograde disk around an eccentric binary, with the shocked bridge structure between the black holes.
+    </p>
+  </div>
+</section>
+
 <section id="gallery">
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-num">02</span>
-      <h2>Gallery</h2>
+      <h2>Dynamical Friction</h2>
     </div>
     <div class="prose" style="margin-bottom:8px">
-      <p>Movies from numerical simulations and linear perturbation theory. They play as you scroll.</p>
-    </div>
-
-    <div class="ggroup" id="disk-sims">
-      <div class="glabel"><span class="gnum">2.1</span> Circumbinary disk simulations</div>
-      <div class="mgrid">
-        <figure>
-          <video muted loop playsinline preload="none" poster="assets/img/poster-Comparison_Pro_Ret.jpg" data-lazy>
-            <source src="assets/video/Comparison_Pro_Ret.mp4" type="video/mp4">
-          </video>
-          <figcaption>
-            <b>Prograde vs. retrograde</b>
-            Side-by-side surface density for a binary in prograde and retrograde circumbinary disks. Note the cleared cavity in one and the direct intrabinary flow in the other.
-          </figcaption>
-        </figure>
-        <figure>
-          <video muted loop playsinline preload="none" poster="assets/img/poster-EccentricRetrograde.jpg" data-lazy>
-            <source src="assets/video/EccentricRetrograde.mp4" type="video/mp4">
-          </video>
-          <figcaption>
-            <b>Eccentric retrograde disk</b>
-            Retrograde circumbinary disk around an eccentric binary, showing the shocked bridge structure between the black holes.
-          </figcaption>
-        </figure>
-        <figure>
-          <video muted loop playsinline preload="none" poster="assets/img/poster-my-animation.jpg" data-lazy>
-            <source src="assets/video/my-animation.mp4" type="video/mp4">
-          </video>
-          <figcaption>
-            <b>Polar disk, 3D</b>
-            Three-dimensional rendering of a polar-aligned circumbinary disk.
-          </figcaption>
-        </figure>
-      </div>
+      <p>Density response of a gaseous medium to a moving perturber, from linear perturbation theory. These play as you scroll.</p>
     </div>
 
     <div class="ggroup" id="df-binary">
-      <div class="glabel"><span class="gnum">2.2</span> Dynamical friction · eccentric binaries</div>
+      <div class="glabel"><span class="gnum">2.1</span> Eccentric binaries</div>
       <div class="mgrid">
         <figure>
           <video muted loop playsinline preload="none" poster="assets/img/poster-SubsonicBinaryCropped.jpg" data-lazy>
@@ -356,7 +393,7 @@ footer{
     </div>
 
     <div class="ggroup" id="df-hyper">
-      <div class="glabel"><span class="gnum">2.3</span> Dynamical friction · hyperbolic encounters</div>
+      <div class="glabel"><span class="gnum">2.2</span> Hyperbolic encounters</div>
       <div class="mgrid">
         <figure>
           <video muted loop playsinline preload="none" poster="assets/img/poster-HyperbolicMovie.jpg" data-lazy>

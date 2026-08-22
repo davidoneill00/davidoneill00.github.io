@@ -225,6 +225,23 @@ figcaption b{color:var(--paper);font-weight:600;display:block;margin-bottom:3px}
   .pub-yr{padding-top:0}
 }
 
+/* ---------- about ---------- */
+.about-grid{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:52px;
+  align-items:start;
+}
+.about-photo{
+  width:100%;
+  border:1px solid var(--rule);
+  filter:grayscale(100%) contrast(1.02);
+}
+@media(max-width:720px){
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .about-photo{max-width:240px}
+}
+
 /* ---------- contact ---------- */
 .cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:2px;background:var(--rule)}
 .ccell{background:var(--ink);padding:30px 26px}
@@ -460,19 +477,16 @@ footer{
   </div>
 </section>
 
-<section id="about">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">04</span>
-      <h2>About</h2>
-    </div>
-    <div class="prose">
-      <p>I'm a postdoctoral researcher at the Institute of Science and Technology Austria, working with Zoltán Haiman on circumbinary disk dynamics and gravitational wave source modelling.</p>
-      <p>I completed my PhD at the Niels Bohr Institute, University of Copenhagen, with earlier study at NUI Maynooth. My work sits at the intersection of computational hydrodynamics and gravitational wave astrophysics: simulating the gas flows around merging black holes, and translating those simulations into predictions for LISA and for electromagnetic surveys.</p>
-      <p>Day to day that means Python, C++, and a lot of time on HPC clusters. I'm Irish, currently based just outside Vienna.</p>
-    </div>
+
+
+
+<div class="about-grid">
+  <img class="about-photo" src="assets/img/headshot.jpg" alt="David O'Neill" width="280" height="280">
+  <div class="prose">
+    <p> I'm a postdoctoral researcher at the Institute of Science and Technology Austria, working with Zoltán Haiman on circumbinary disk dynamics and gravitational wave source modelling.</p>
+    <p> I completed my PhD at the Niels Bohr Institute, University of Copenhagen, with earlier study at NUI Maynooth. My work sits at the intersection of computational hydrodynamics and gravitational wave astrophysics: simulating the gas flows around merging black holes, and translating those simulations into predictions for LISA and for electromagnetic surveys.</p>
   </div>
-</section>
+</div>
 
 <section id="contact">
   <div class="wrap">

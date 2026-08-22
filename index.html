@@ -148,6 +148,19 @@ h3{font-size:1.32rem;font-weight:400;margin-bottom:12px;line-height:1.3}
 }
 .rcard p{font-size:.98rem;color:var(--paper-dim);line-height:1.6}
 
+/* ---------- research subsections ---------- */
+.subsection{padding-top:72px}
+.subsection:first-of-type{padding-top:16px}
+.sub-eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--lum);
+  margin-bottom:14px;
+}
+.sub-title{
+  font-size:clamp(1.5rem,3vw,2rem);font-weight:300;
+  letter-spacing:-.01em;line-height:1.1;margin-bottom:32px;
+}
+
 /* ---------- full-bleed simulation sections ---------- */
 .feature{padding:104px 0;border-top:1px solid var(--rule)}
 .feature-head{margin-bottom:44px}
@@ -226,16 +239,10 @@ figcaption b{color:var(--paper);font-weight:600;display:block;margin-bottom:3px}
 }
 
 /* ---------- about ---------- */
-.about-grid{
-  display:grid;
-  grid-template-columns:280px 1fr;
-  gap:52px;
-  align-items:start;
-}
+.about-grid{display:grid;grid-template-columns:1fr 280px;gap:52px;align-items:start}
 .about-photo{
-  width:100%;
-  border:1px solid var(--rule);
-  filter:grayscale(100%) contrast(1.02);
+  width:100%;border:1px solid var(--rule);
+  filter:grayscale(100%) contrast(1.02);display:block;
 }
 @media(max-width:720px){
   .about-grid{grid-template-columns:1fr;gap:32px}
@@ -265,8 +272,6 @@ footer{
     <a class="brand" href="#top">D. O'Neill</a>
     <ul class="navlinks">
       <li><a href="#research">Research</a></li>
-      <li><a href="#polar">Simulations</a></li>
-      <li><a href="#gallery">Dynamical Friction</a></li>
       <li><a href="#publications">Publications</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -295,143 +300,114 @@ footer{
       <span class="sec-num">01</span>
       <h2>Research</h2>
     </div>
-    <div class="prose" style="margin-bottom:52px">
-      <p>Supermassive black hole binaries do not merge in vacuum. They spiral together inside accretion disks, and that gas leaves fingerprints — on the orbit, on the light we see, and on the gravitational waveform itself. My work is about predicting those fingerprints precisely enough to be useful when LISA flies.</p>
-    </div>
-    <div class="rgrid">
-      <div class="rcard">
-        <span class="rtag">Retrograde disks</span>
-        <h3>Counter-rotating gas</h3>
-        <p>Retrograde circumbinary disks lack the orbital resonances that dominate prograde systems, so they behave in fundamentally different ways: no cleared cavity, direct gas flow onto the binary, and shocked structures between the black holes. They may be nearly as common as prograde disks — and far less studied.</p>
-      </div>
-      <div class="rcard">
-        <span class="rtag">Gravitational wave decoupling</span>
-        <h3>The last inspiral</h3>
-        <p>When gravitational wave emission overtakes viscous evolution, the binary decouples from its disk and races to merger. What the gas does during that final phase determines whether there is an electromagnetic counterpart — and what it looks like.</p>
-      </div>
-      <div class="rcard">
-        <span class="rtag">EMRIs in ADAFs</span>
-        <h3>Waveform dephasing</h3>
-        <p>A stellar-mass black hole spiralling into a supermassive one passes through hot, radiatively inefficient gas. Linear perturbation theory of the resulting wake gives the migration torque, and from it the accumulated phase shift LISA might measure.</p>
-      </div>
-      <div class="rcard">
-        <span class="rtag">Numerical methods</span>
-        <h3>Hydrodynamics at scale</h3>
-        <p>Moving-mesh and GPU-accelerated finite volume simulation of accretion flows, using Sailfish and AthenaK on HPC clusters. Long integrations, careful shock capturing, and the diagnostics needed to trust the result.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="feature" id="polar">
-  <div class="wrap">
-    <div class="feature-head">
-      <div class="feature-eyebrow">Circumbinary disk simulations</div>
-      <h2 class="feature-title">Polar Circumbinary Disks</h2>
-    </div>
-    <div class="feature-stage">
-      <video muted loop playsinline preload="none" poster="assets/img/poster-my-animation.jpg" data-lazy>
-        <source src="assets/video/my-animation.mp4" type="video/mp4">
-      </video>
-    </div>
-    <p class="feature-cap">
-      <b>Three-dimensional polar-aligned disk.</b>
-      A circumbinary disk settled into a polar configuration, orbiting perpendicular to the binary plane. Shown in three orthogonal projections.
-    </p>
-  </div>
-</section>
-
-<section class="feature" id="retrograde">
-  <div class="wrap">
-    <div class="feature-head">
-      <div class="feature-eyebrow">Circumbinary disk simulations</div>
-      <h2 class="feature-title">Retrograde Circumbinary Disks</h2>
-    </div>
-    <div class="feature-duo">
-      <div class="cell">
-        <video muted loop playsinline preload="none" poster="assets/img/poster-Comparison_Pro_Ret.jpg" data-lazy>
-          <source src="assets/video/Comparison_Pro_Ret.mp4" type="video/mp4">
+    <div class="subsection">
+      <div class="sub-eyebrow">Circumbinary disk simulations</div>
+      <h3 class="sub-title">Polar Circumbinary Disks</h3>
+      <div class="feature-stage">
+        <video muted loop playsinline preload="none" poster="assets/img/poster-my-animation.jpg" data-lazy>
+          <source src="assets/video/my-animation.mp4" type="video/mp4">
         </video>
       </div>
-      <div class="cell">
-        <video muted loop playsinline preload="none" poster="assets/img/poster-EccentricRetrograde.jpg" data-lazy>
-          <source src="assets/video/EccentricRetrograde.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-    <p class="feature-cap">
-      <b>Left:</b> retrograde and prograde disks side by side, showing the cleared cavity of the prograde case against the direct intrabinary flow of the retrograde one.
-      <b>Right:</b> a retrograde disk around an eccentric binary, with the shocked bridge structure between the black holes.
-    </p>
-  </div>
-</section>
-
-<section id="gallery">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">02</span>
-      <h2>Dynamical Friction</h2>
-    </div>
-    <div class="prose" style="margin-bottom:8px">
-      <p>Density response of a gaseous medium to a moving perturber, from linear perturbation theory. These play as you scroll.</p>
+      <p class="feature-cap">
+        <b>Three-dimensional polar-aligned disk.</b>
+        A circumbinary disk settled into a polar configuration, orbiting perpendicular to the binary plane. Shown in three orthogonal projections.
+      </p>
     </div>
 
-    <div class="ggroup" id="df-binary">
-      <div class="glabel"><span class="gnum">2.1</span> Eccentric binaries</div>
-      <div class="mgrid">
-        <figure>
-          <video muted loop playsinline preload="none" poster="assets/img/poster-SubsonicBinaryCropped.jpg" data-lazy>
-            <source src="assets/video/SubsonicBinaryCropped.mp4" type="video/mp4">
+    <div class="subsection">
+      <div class="sub-eyebrow">Circumbinary disk simulations</div>
+      <h3 class="sub-title">Retrograde Circumbinary Disks</h3>
+      <div class="feature-duo">
+        <div class="cell">
+          <video muted loop playsinline preload="none" poster="assets/img/poster-Comparison_Pro_Ret.jpg" data-lazy>
+            <source src="assets/video/Comparison_Pro_Ret.mp4" type="video/mp4">
           </video>
-          <figcaption>
-            <b>Subsonic</b>
-            Linear-theory density perturbation from an eccentric binary moving subsonically through a gaseous medium.
-          </figcaption>
-        </figure>
-        <figure>
-          <video muted loop playsinline preload="none" poster="assets/img/poster-TransonicCropped.jpg" data-lazy>
-            <source src="assets/video/TransonicCropped.mp4" type="video/mp4">
+        </div>
+        <div class="cell">
+          <video muted loop playsinline preload="none" poster="assets/img/poster-EccentricRetrograde.jpg" data-lazy>
+            <source src="assets/video/EccentricRetrograde.mp4" type="video/mp4">
           </video>
-          <figcaption>
-            <b>Transonic</b>
-            The same system near Mach 1, where the wake structure changes character.
-          </figcaption>
-        </figure>
-        <figure>
-          <video muted loop playsinline preload="none" poster="assets/img/poster-SupersonicBinary.jpg" data-lazy>
-            <source src="assets/video/SupersonicBinary.mp4" type="video/mp4">
-          </video>
-          <figcaption>
-            <b>Supersonic</b>
-            Supersonic motion, with the Mach cone and trailing density wake fully developed.
-          </figcaption>
-        </figure>
+        </div>
+      </div>
+      <p class="feature-cap">
+        <b>Left:</b> retrograde and prograde disks side by side, showing the cleared cavity of the prograde case against the direct intrabinary flow of the retrograde one.
+        <b>Right:</b> a retrograde disk around an eccentric binary, with the shocked bridge structure between the black holes.
+      </p>
+    </div>
+
+    <div class="subsection">
+      <div class="sub-eyebrow">Linear perturbation theory</div>
+      <h3 class="sub-title">Dynamical Friction</h3>
+      <p class="prose" style="margin-bottom:36px">Density response of a gaseous medium to a moving perturber. These play as you scroll.</p>
+
+      <div class="ggroup" id="df-binary">
+        <div class="glabel">Eccentric binaries</div>
+        <div class="mgrid">
+          <figure>
+            <video muted loop playsinline preload="none" poster="assets/img/poster-SubsonicBinaryCropped.jpg" data-lazy>
+              <source src="assets/video/SubsonicBinaryCropped.mp4" type="video/mp4">
+            </video>
+            <figcaption>
+              <b>Subsonic</b>
+              Linear-theory density perturbation from an eccentric binary moving subsonically through a gaseous medium.
+            </figcaption>
+          </figure>
+          <figure>
+            <video muted loop playsinline preload="none" poster="assets/img/poster-TransonicCropped.jpg" data-lazy>
+              <source src="assets/video/TransonicCropped.mp4" type="video/mp4">
+            </video>
+            <figcaption>
+              <b>Transonic</b>
+              The same system near Mach 1, where the wake structure changes character.
+            </figcaption>
+          </figure>
+          <figure>
+            <video muted loop playsinline preload="none" poster="assets/img/poster-SupersonicBinary.jpg" data-lazy>
+              <source src="assets/video/SupersonicBinary.mp4" type="video/mp4">
+            </video>
+            <figcaption>
+              <b>Supersonic</b>
+              Supersonic motion, with the Mach cone and trailing density wake fully developed.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="ggroup" id="df-hyper" style="margin-top:40px">
+        <div class="glabel">Hyperbolic encounters</div>
+        <div class="mgrid">
+          <figure>
+            <video muted loop playsinline preload="none" poster="assets/img/poster-ExtractedHyperbolic.jpg" data-lazy>
+              <source src="assets/video/ExtractedHyperbolic.mp4" type="video/mp4">
+            </video>
+            <figcaption>
+              <b>Extracted wake</b>
+              The isolated density wake of a mass on a hyperbolic trajectory, with the background flow subtracted.
+            </figcaption>
+          </figure>
+          <figure>
+            <video muted loop playsinline preload="none" poster="assets/img/poster-HyperbolicMovie.jpg" data-lazy>
+              <source src="assets/video/HyperbolicMovie.mp4" type="video/mp4">
+            </video>
+            <figcaption>
+              <b>Hyperbolic passage</b>
+              Density response to a mass on a hyperbolic Keplerian trajectory through gas, from linear perturbation theory.
+            </figcaption>
+          </figure>
+          <figure>
+            <video muted loop playsinline preload="none" poster="assets/img/poster-AsymptoticMovie.jpg" data-lazy>
+              <source src="assets/video/AsymptoticMovie.mp4" type="video/mp4">
+            </video>
+            <figcaption>
+              <b>Asymptotic regime</b>
+              The late-time asymptotic wake of the hyperbolic encounter.
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </div>
 
-    <div class="ggroup" id="df-hyper">
-      <div class="glabel"><span class="gnum">2.2</span> Hyperbolic encounters</div>
-      <div class="mgrid">
-        <figure>
-          <video muted loop playsinline preload="none" poster="assets/img/poster-HyperbolicMovie.jpg" data-lazy>
-            <source src="assets/video/HyperbolicMovie.mp4" type="video/mp4">
-          </video>
-          <figcaption>
-            <b>Hyperbolic passage</b>
-            Density response to a mass on a hyperbolic Keplerian trajectory through gas, from linear perturbation theory.
-          </figcaption>
-        </figure>
-        <figure>
-          <video muted loop playsinline preload="none" poster="assets/img/poster-AsymptoticMovie.jpg" data-lazy>
-            <source src="assets/video/AsymptoticMovie.mp4" type="video/mp4">
-          </video>
-          <figcaption>
-            <b>Asymptotic regime</b>
-            The late-time asymptotic wake of the hyperbolic encounter.
-          </figcaption>
-        </figure>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -477,16 +453,22 @@ footer{
   </div>
 </section>
 
-
-
-
-<div class="about-grid">
-  <img class="about-photo" src="assets/img/headshot.jpg" alt="David O'Neill" width="280" height="280">
-  <div class="prose">
-    <p> I'm a postdoctoral researcher at the Institute of Science and Technology Austria, working with Zoltán Haiman on circumbinary disk dynamics and gravitational wave source modelling.</p>
-    <p> I completed my PhD at the Niels Bohr Institute, University of Copenhagen, with earlier study at NUI Maynooth. My work sits at the intersection of computational hydrodynamics and gravitational wave astrophysics: simulating the gas flows around merging black holes, and translating those simulations into predictions for LISA and for electromagnetic surveys.</p>
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2>About</h2>
+    </div>
+    <div class="about-grid">
+      <div class="prose" style="max-width:none">
+        <p>I'm a postdoctoral researcher at the Institute of Science and Technology Austria, working with Zoltán Haiman on circumbinary disk dynamics and gravitational wave source modelling.</p>
+        <p>I completed my PhD at the Niels Bohr Institute, University of Copenhagen, with earlier study at NUI Maynooth. My work sits at the intersection of computational hydrodynamics and gravitational wave astrophysics: simulating the gas flows around merging black holes, and translating those simulations into predictions for LISA and for electromagnetic surveys.</p>
+        <p>Day to day that means Python, C++, and a lot of time on HPC clusters. I'm Irish, currently based just outside Vienna.</p>
+      </div>
+      <img class="about-photo" src="assets/img/headshot.jpg" alt="David O'Neill" width="280" height="280">
+    </div>
   </div>
-</div>
+</section>
 
 <section id="contact">
   <div class="wrap">
